@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+    <head th:replace="plantilla::head">
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container" th:replace="plantilla::menu"></div>
+        <div class="container" style="max-width: 400px; margin-top: 50px">
+            <div class="card">
+                <div class="card-header">
+                    Modificar Post
+                </div>
+                <div class="card-body">
+                    <form action="/updatelibro" >
+                        <div class="mb-3">
+                            <select  name="autor" id="auto" class="form-control" >
+                                <option value="0">Seleccionar Autor</option>                                
+                                <option th:each="auto : ${autos}" th:value="${auto.id}" th:text="${auto.nomaut}" th:selected="false"/>                              
+                            </select>  
+                        </div>
+                        <div class="mb-3">
+                            <select name="autor" id="auto" class="form-control">
+                                <option value="0">Seleccionar Apellido de Autor</option>                                
+                                <option th:each="auto : ${autos}" th:text="${auto.apeaut}" th:selected="false"/>                              
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <select  name="editorial" id="edito" class="form-control" >
+                                <option value="0">Seleccionar Editorial</option>                                
+                                <option th:each="edito : ${edits}" th:value="${edito.id}" th:text="${edito.nomedi}" th:selected="false"/>                              
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control m-25" placeholder="Libro" name="nombre" th:value="${lib.nombre}" >
+                        </div>
+
+                        <input type="hidden" name="id" th:value="${lib.id}" />
+                        <input type="submit" class="btn btn-primary" value="Actualizar">
+                    </form>
+                </div>
+            </div>
+    </body>
+</html>
+
